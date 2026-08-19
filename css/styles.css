@@ -157,7 +157,7 @@ img {
 }
 
 .profile__img{
-  width: 200px;
+  width: 230px;
   transform: translateY(0.5rem) rotate(-5deg);
   justify-self: center;
   align-self: flex-end;
