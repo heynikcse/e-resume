@@ -1,0 +1,20 @@
+/* Google font link */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* variable css */
+:root {
+
+  --first-color: hsl(90, 82%, 68%);
+  --first-color-alt: hsl(90, 78%, 64%);
+  --title-color: hsl(0, 0%, 4%);
+  --black-color: hsl(227, 25%, 11%);
+  --body-color: hsl(260, 9%, 94%);
+
+  --body-font: "Montserrat", sans-serif;
+  --biggest-font-size: 3rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 938rem;
+  
+}
