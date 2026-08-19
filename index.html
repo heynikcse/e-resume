@@ -23,7 +23,7 @@
       <section class="profile section">
         <div class="profile__container container grid">
           <div class="profile__image">
-            <img src="img/profile.jpg" alt="" class="profile__img">
+            <img src="img/profilebg.jpeg" alt="" class="profile__img">
           </div>
 
           <div class="profile__data">
@@ -31,8 +31,8 @@
             <h1 class="profile__name">Nikhil Raj</h1>
 
             <div class="profile__buttons">
-              <button class="profile__button">Information</button>
-              <button class="profile__button">Projects</button>
+              <button class="profile__button main-active" data-target="#info">Information</button>
+              <button class="profile__button" data-target="#projects">Projects</button>
             </div>
 
             <h2 class="section__title">Profile</h2>
@@ -69,53 +69,53 @@
 
                 <ul class="tools__list">
                   <li class="tools__item">
-                    <img src="img/html-5-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/html-5-svgrepo-com.svg" alt="html" class="tools__img">
                     <span class="tools__name">Html</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/css-3-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/css-3-svgrepo-com.svg" alt="css" class="tools__img">
                     <span class="tools__name">Css</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/js-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/js-svgrepo-com.svg" alt="js" class="tools__img">
                     <span class="tools__name">JavaScript</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/react-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/react-svgrepo-com.svg" alt="react" class="tools__img">
                     <span class="tools__name">React.js</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/github-142-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/github-142-svgrepo-com.svg" alt="github" class="tools__img">
                     <span class="tools__name">Github</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/git-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/git-svgrepo-com.svg" alt="git" class="tools__img">
                     <span class="tools__name">Git</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/java-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/java-svgrepo-com.svg" alt="java" class="tools__img">
                     <span class="tools__name">Java</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/python-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/python-svgrepo-com.svg" alt="python" class="tools__img">
                     <span class="tools__name">Python</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/vercel-fill-svgrepo-com.svg" alt="" class="tools__img">
+                    <img src="img/vercel-fill-svgrepo-com.svg" alt="vercel" class="tools__img">
                     <span class="tools__name">Vercel</span>
                   </li>
 
                   <li class="tools__item">
-                    <img src="img/vs-code-svgrepo-com.svg" alt="" class="tools__img">
-                    <span class="tools__name">Vs Code</span>
+                    <img src="img/vs-code-svgrepo-com.svg" alt="vs-code" class="tools__img">
+                    <span class="tools__name">Vs-Code</span>
                   </li>
                 </ul>
               </div>
@@ -125,33 +125,146 @@
           <div class="main__right">
             <!-- EXPERIENCE -->
              <section class="experience section">
+              <div class="experience__container container">
+                <h2 class="section__title">Hackathons</h2>
 
+                <div class="experience__content">
+                  <article class="experience__data">
+                    <div class="experience__titles">
+                      <p>VIT Bhopal / <br> April 2026</p>
+                      <h3>VIBE HACK</h3>
+                    </div>
+
+                    <ul class="experience__list">
+                      <li>Created Ghost Protocol, a real-time anonymous chat application with self-destructing messages.</li>
+                      <li>Implemented real-time messaging, live emoji reactions, and automatic message deletion using Socket.io.</li>
+                      <li>Built the application with React, Node.js, Express, and Socket.io, with frontend and backend deployment.</li>
+                    </ul>
+                  </article>
+
+                  <article class="experience__data">
+                      <div class="experience__titles">
+                          <p>OWASP VIT Bhopal / <br> March 2026</p>
+                          <h3>HackZero'26 / CTF Participant</h3>
+                      </div>
+
+                      <ul class="experience__list">
+                          <li>Participated in HackZero'26, a CTF event organized by OWASP VIT Bhopal University.</li>
+                          <li>Competed as a member of Team Cyber Rangers in the cybersecurity-focused event.</li>
+                      </ul>
+                  </article>
+                </div>
+              </div>
              </section>
 
             <!-- EDUCATION -->
              <section class="education section">
+              <div class="education__container container">
+                <h2 class="section__title">Education</h2>
 
+                <ul class="education__list">
+                  <li class="education__item">
+                    <p>Sep 2024 - Present</p>
+
+                    <div class="education__data">
+                        <h3>Bachelor of Technology in Computer Science Engineering</h3>
+                        <h3>VIT Bhopal University</h3>
+                        <p>CGPA: 8.3</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
              </section>
           </div>
         </div>
 
         <!-- projects -->
         <section class="projects section" data-content id="projects">
+          <div class="projects__container container">
+            <h2 class="section__title">Projects</h2>
 
+            <div class="projects__content grid">
+              <article class="projects__card">
+                <a href="dataforge-two-azure.vercel.app" class="projects__link">
+                  <img src="img/project1.png" alt="" class="projects__img">
+                </a>
+
+                <h3 class="projects__name">DataForge</h3>
+                <p>
+                  A premium, editorial-style registration site for a 48-hour national hackathon hosted by the Data Science Club, VIT Bhopal.
+                </p>
+              </article>
+
+              <article class="projects__card">
+                <a href="https://vcollab-vitbhopal.vercel.app/login" class="projects__link">
+                  <img src="img/project2.png" alt="" class="projects__img">
+                </a>
+
+                <h3 class="projects__name">Vcollab</h3>
+                <p>
+                  VCollab is the student network built exclusively for VIT Bhopal — find project partners, join communities, discover events, and keep up with campus life.
+                </p>
+              </article>
+
+              <article class="projects__card">
+                <a href="https://hand-cricket-uf28.onrender.com" class="projects__link">
+                  <img src="img/project3.png" alt="" class="projects__img">
+                </a>
+
+                <h3 class="projects__name">Hand Cricket</h3>
+                <p>
+                  A real-time multiplayer implementation of the classic Hand Cricket game built using Node.js, Socket.IO, and Vanilla JavaScript. Play with your friends online with smooth animations, live score updates, spoken commentary, and an interactive UI.
+                </p>
+              </article>
+
+              <article class="projects__card">
+                <a href="https://ghost-protocol-two.vercel.app/" class="projects__link">
+                  <img src="img/project4.png" alt="" class="projects__img">
+                </a>
+
+                <h3 class="projects__name">Ghost Protocol</h3>
+                <p>
+                  A real-time anonymous chat application with self-destructing messages and live reactions.
+                </p>
+              </article>
+            </div>
+          </div>
         </section>
       </div>
 
       <!-- Footer -->
       <footer class="footer">
+        <div class="footer__container container">
+          <a href="mailto:nikhilraj3103@gmail.com" class="footer__link">
+            <i class="ri-mail-line"></i>
+            <span>nikhilraj3103@gmail.com</span>
+          </a>
 
+          <a href="tel:(+91) 6287959790" class="footer__link">
+            <i class="ri-phone-line"></i>
+            <span>(+91) 6287959790</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/nikhil-raj-3204b3362/" class="footer__link">
+            <i class="ri-linkedin-box-line"></i>
+            <span>linkedin.com/in/nikhil-raj</span>
+          </a>
+
+          <a href="https://github.com/heynikcse" class="footer__link">
+            <i class="ri-github-line"></i>
+            <span>github.com/heynikcse</span>
+          </a>
+
+        </div>
       </footer>
     </div>
    </main>
 
 
-  <script></script>
+   <!-- ScrollReveal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
 
-  <!-- main js file -->
+  <!-- Main js file -->
   <script src="js/main.js"></script>
 
 </body>

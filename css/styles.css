@@ -119,8 +119,28 @@ img {
 }
 
 /* Show & hide Section */
+.main__area [data-content]{
+  display: none;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.main-active[data-content]{
+  display: grid;
+}
+
+.main-active[data-content].show{
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Active button */
+
+.profile__button.main-active{
+  background-color: var(--first-color);
+  transition: background-color 0.3s ease;
+}
 
 /* PROFILE */
 .profile__container{
@@ -165,7 +185,7 @@ img {
   padding: 0.25rem;
 }
 
-.profile_button{
+.profile__button{
   background-color: var(--body-color);
   color: var(--title-color);
   padding: 0.75rem 1.5rem;
@@ -175,7 +195,7 @@ img {
   transition: background-color 0.4s;
 }
 
-.profile_button:hover{
+.profile__button:hover{
   background-color: var(--first-color-alt);
 }
 
@@ -215,9 +235,215 @@ img {
 }
 
 
-
 /* EXPERIENCE */
+
+.experience__content{
+  display: grid;
+  row-gap: 2rem;
+}
+
+.experience__titles{
+  display: grid;
+  row-gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.experience__titles :is(p, h3){
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.experience__list{
+  list-style: initial;
+  padding-left: 2rem;
+}
 
 /* EDUCATION */
 
+.education__list {
+    display: grid;
+    row-gap: 1.5rem;
+}
+
+.education__item {
+    display: grid;
+    row-gap: 0.25rem;
+}
+
+.education__item p {
+  font-style: italic;
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-regular);
+    margin: 0;
+}
+
+.education__item h3 {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-semi-bold);
+    margin: 0;
+}
+
+.education__data {
+    min-width: 0;
+}
+
+.education__data p {
+    margin-top: 0.25rem;
+    font-size: var(--small-font-size);
+}
+
 /* PROJECTS */
+
+.projects__link{
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1rem;
+}
+
+.projects__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.projects__link:hover .projects__img{
+  transform: scale(1.1);
+}
+
+.projects__name{
+  font-size: var(--normal-font-size);
+  margin-bottom: 0.5rem;
+}
+
+/* FOOTER */
+
+.footer__container{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding-block: 2rem;
+}
+
+.footer__link{
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  min-width: 0;
+  color: var(--title-color);
+  transition: transform 0.4s;
+}
+
+.footer__link i{
+  flex-shrink: 0;
+  font-size: 1.5rem;
+}
+
+.footer__link span{
+  overflow-wrap: anywhere;
+  font-weight: var(--font-medium);
+}
+
+.footer__link:hover{
+  transform: translateY(-0.5rem);
+}
+
+/* BREAKPOINTS */
+/* For Medium Devices */
+
+@media (width >= 768px){
+  .projects__content{
+    grid-template-columns: repeat(2, 350px);
+  }
+
+  .footer__container{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+}
+
+/* For Large Devices */
+
+@media (width >= 1150px){
+  .main__content{
+    max-width: 1120px;
+    margin: 4rem auto;
+    padding-inline: 10rem;
+    box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.1);
+  }
+  .main__group{
+    display: grid;
+    grid-template-columns: 320px 530px;
+  }
+  .main__left{
+    border-right: 3px dashed var(--black-color);
+  }
+
+  .section{
+    padding-block: 2.5rem;
+  }
+
+  .profile__container{
+    grid-template-columns: 540px 260px;
+    column-gap: 2rem;
+    align-items: center;
+    padding-top: 2rem;
+  }
+  .profile__data{
+    order: -1;
+  }
+  .profile__greeting,
+  .profile__name{
+    text-align: initial;
+  }
+  .profile__buttons{
+    justify-content: flex-start;
+  }
+  .profile__image{
+    margin: 0;
+  }
+
+  .tools__list{
+    flex-direction: column;
+    align-items: initial;
+  }
+  .tools__item{
+    column-gap: 0.5rem;
+  }
+  .tools__img{
+    width: 1.5rem;
+  }
+  .tools__name{
+    font-size: var(--normal-font-size);
+  }
+
+  .experience__titles {
+        grid-template-columns: 120px max-content;
+        column-gap: 2rem;
+    }
+
+    .experience__list {
+        padding-left: 10.5rem;
+    }
+
+    .education__item {
+        grid-template-columns: 115px minmax(0, 1fr);
+        column-gap: 2.5rem;
+    }
+
+    .education__data {
+        min-width: 0;
+    }
+
+    .education__data h3 {
+        min-width: 0;
+        overflow-wrap: break-word;
+    }
+
+    .footer__container{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 3rem;
+      padding-block: 3rem;
+    }
+}
