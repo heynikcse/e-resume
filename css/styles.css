@@ -19,7 +19,7 @@
   --h3-font-size: 1rem;
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
-  --smaller_font-size: .75rem;
+  --smaller-font-size: .75rem;
 
   /* font weight */
   --font-regular: 400;
@@ -36,7 +36,7 @@
   :root {
     --biggest-font-size: 4.5rem;
     --h1-font-size: 2rem;
-    --h2--font-size: 1.5rem;
+    --h2-font-size: 1.5rem;
     --h3-font-size: 1.25rem;
     --normal-font-size: 1rem;
     --small-font-size: .875rem;
@@ -59,12 +59,11 @@ button {
 
 body {
   background-color: var(--body-color);
-  counter-reset: var(--title-color);
 }
 
 input,
 button {
-  background-color: none;
+  background-color: transparent;
   border: none;
   outline: none;
 }
