@@ -298,6 +298,7 @@ img {
   display: block;
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  border-radius: 6px;
   margin-bottom: 1rem;
 }
 
@@ -315,6 +316,10 @@ img {
 .projects__name{
   font-size: var(--normal-font-size);
   margin-bottom: 0.5rem;
+}
+
+.projects__card{
+  min-width: 0;
 }
 
 /* FOOTER */
@@ -354,7 +359,7 @@ img {
 
 @media (width >= 768px){
   .projects__content{
-    grid-template-columns: repeat(2, 350px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footer__container{
