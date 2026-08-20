@@ -46,7 +46,12 @@ tabs.forEach((tab) => {
       targetContent.removeAttribute('aria-hidden')
 
       requestAnimationFrame(() => {
-        targetContent.classList.add('show')
+        // Give the browser one paint with the panel at opacity: 0 after it
+        // changes from display: none; otherwise it may jump straight to the
+        // final state instead of running the fade-in transition.
+        requestAnimationFrame(() => {
+          targetContent.classList.add('show')
+        })
       })
     }
 
@@ -100,7 +105,9 @@ window.addEventListener('load', () => {
   if (!initialContent) return
 
   requestAnimationFrame(() => {
-    initialContent.classList.add('show')
+    requestAnimationFrame(() => {
+      initialContent.classList.add('show')
+    })
   })
 })
 
