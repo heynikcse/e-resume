@@ -446,6 +446,9 @@ input:focus-visible {
        4rem leaves 992px, comfortably covering both. */
     padding-inline: 4rem;
     box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.1);
+    /* ScrollReveal moves .main__area left during its entrance. Keep that
+       temporary transform inside the resume card rather than the viewport. */
+    overflow: hidden;
   }
   .main__group{
     display: grid;
