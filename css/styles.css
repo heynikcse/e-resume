@@ -125,8 +125,7 @@ img {
   display: none;
   opacity: 0;
   transform: translateY(0.5rem);
-  /* Shortened from 0.4s so tab switches feel snappier, especially on mobile. */
-  transition: opacity 0.22s ease, transform 0.22s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .main-active[data-content]{

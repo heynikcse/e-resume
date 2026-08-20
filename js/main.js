@@ -3,10 +3,8 @@ const tabs = document.querySelectorAll('[data-target]'),
     tabContents = document.querySelectorAll('[data-content]')
 let isSwitching = false
 
-// Matches the 0.22s transition duration in styles.css, with a small buffer.
-// (Was 500ms against a 0.4s transition — trimming both is most of the
-// perceived "slow tab switch" fix.)
-const TRANSITION_FALLBACK_MS = 280
+// Matches the 0.3s transition duration in styles.css, with a small buffer.
+const TRANSITION_FALLBACK_MS = 360
 
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
