@@ -4,10 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <!-- Removed the invalid href="#" favicon (it was triggering a duplicate request
+       for the current page). Swap this for a real icon file when you have one. -->
+  <link rel="icon" href="data:,">
 
   <!-- remixicons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Google Fonts moved out of the CSS @import (which can't carry SRI) and into a
+       <link> tag. Note: Google itself recommends against pinning SRI hashes for
+       Fonts, since the font binaries served vary by browser/user-agent. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
 
   <!-- css file -->
   <link rel="stylesheet" href="css/styles.css">
@@ -30,9 +39,27 @@
             <h3 class="profile__greeting">Hello, I'm</h3>
             <h1 class="profile__name">Nikhil Raj</h1>
 
-            <div class="profile__buttons">
-              <button class="profile__button main-active" data-target="#info">Information</button>
-              <button class="profile__button" data-target="#projects">Projects</button>
+            <!-- Tab semantics: role="tablist" on the wrapper, role="tab" + aria-selected
+                 + aria-controls on each button. tabindex follows the roving-tabindex
+                 pattern (active tab = 0, inactive = -1) so arrow/tab-key users land on
+                 the right control. -->
+            <div class="profile__buttons" role="tablist" aria-label="Resume sections">
+              <button
+                class="profile__button main-active"
+                id="tab-info"
+                role="tab"
+                data-target="#info"
+                aria-selected="true"
+                aria-controls="info"
+                tabindex="0">Information</button>
+              <button
+                class="profile__button"
+                id="tab-projects"
+                role="tab"
+                data-target="#projects"
+                aria-selected="false"
+                aria-controls="projects"
+                tabindex="-1">Projects</button>
             </div>
 
             <h2 class="section__title">Profile</h2>
@@ -44,7 +71,7 @@
       </section>
 
       <div class="main__area">
-        <div class="main__group main-active" data-content id="info">
+        <div class="main__group main-active" data-content id="info" role="tabpanel" aria-labelledby="tab-info" tabindex="0">
           <div class="main__left">
             <!-- SKILLS -->
              <section class="skills section">
@@ -179,7 +206,7 @@
         </div>
 
         <!-- projects -->
-        <section class="projects section" data-content id="projects">
+        <section class="projects section" data-content id="projects" role="tabpanel" aria-labelledby="tab-projects" tabindex="0">
           <div class="projects__container container">
             <h2 class="section__title">Projects</h2>
 
@@ -298,7 +325,7 @@
 
 
    <!-- ScrollReveal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Main js file -->
   <script src="js/main.js"></script>

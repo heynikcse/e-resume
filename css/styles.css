@@ -1,5 +1,5 @@
-/* Google font link */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* Google font link removed from here — moved to a <link> tag in index.html
+   so it can carry crossorigin (an @import can't). */
 
 /* variable css */
 :root {
@@ -65,7 +65,10 @@ input,
 button {
   background-color: transparent;
   border: none;
-  outline: none;
+  /* outline: none removed — it deleted the keyboard focus indicator with
+     nothing to replace it. Focus styling is now handled by the
+     :focus-visible rule near the bottom of this file, so mouse clicks stay
+     clean but keyboard/AT users still get a visible ring. */
 }
 
 h1, h2, h3, h4 {
@@ -121,8 +124,9 @@ img {
 .main__area [data-content]{
   display: none;
   opacity: 0;
-  transform: translateY(1rem);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(0.5rem);
+  /* Shortened from 0.4s so tab switches feel snappier, especially on mobile. */
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 .main-active[data-content]{
@@ -139,6 +143,17 @@ img {
 .profile__button.main-active{
   background-color: var(--first-color);
   transition: background-color 0.3s ease;
+}
+
+/* Visible keyboard-focus ring for interactive elements (replaces the old
+   blanket outline: none on input/button, which left keyboard users with no
+   focus indicator at all). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--first-color-alt);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* PROFILE */
@@ -426,12 +441,18 @@ img {
   .main__content{
     max-width: 1120px;
     margin: 4rem auto;
-    padding-inline: 10rem;
+    /* Was 10rem, which left only 800px of usable width inside a 1120px
+       container while .main__group (850px) and .profile__container (832px)
+       both needed more than that — guaranteed horizontal overflow.
+       4rem leaves 992px, comfortably covering both. */
+    padding-inline: 4rem;
     box-shadow: 0 0 16px hsla(0, 0%, 0%, 0.1);
   }
   .main__group{
     display: grid;
-    grid-template-columns: 320px 530px;
+    /* Right column now flexes instead of a hard 530px, so this grid can
+       never overflow its container regardless of padding tweaks later. */
+    grid-template-columns: 320px minmax(0, 1fr);
   }
   .main__left{
     border-right: 3px dashed var(--black-color);
@@ -442,7 +463,9 @@ img {
   }
 
   .profile__container{
-    grid-template-columns: 540px 260px;
+    /* Text column flexes instead of a hard 540px, for the same overflow-safety
+       reason as .main__group above. */
+    grid-template-columns: minmax(0, 1fr) 260px;
     column-gap: 2rem;
     align-items: center;
     padding-top: 2rem;

@@ -3,6 +3,11 @@ const tabs = document.querySelectorAll('[data-target]'),
     tabContents = document.querySelectorAll('[data-content]')
 let isSwitching = false
 
+// Matches the 0.22s transition duration in styles.css, with a small buffer.
+// (Was 500ms against a 0.4s transition — trimming both is most of the
+// perceived "slow tab switch" fix.)
+const TRANSITION_FALLBACK_MS = 280
+
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
     if (isSwitching) return
@@ -18,12 +23,19 @@ tabs.forEach((tab) => {
 
     isSwitching = true
 
-    // Switch active button
-    tabs.forEach((t) => t.classList.remove('main-active'))
+    // Switch active button + keep ARIA state and roving tabindex in sync
+    tabs.forEach((t) => {
+      t.classList.remove('main-active')
+      t.setAttribute('aria-selected', 'false')
+      t.tabIndex = -1
+    })
     tab.classList.add('main-active')
+    tab.setAttribute('aria-selected', 'true')
+    tab.tabIndex = 0
 
     // Fade out the current content
     currentContent.classList.remove('show')
+    currentContent.setAttribute('aria-hidden', 'true')
 
     const finishTransition = () => {
       currentContent.classList.remove('main-active')
@@ -31,11 +43,10 @@ tabs.forEach((tab) => {
 
       // Fade in new content
       targetContent.classList.add('main-active')
+      targetContent.removeAttribute('aria-hidden')
 
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          targetContent.classList.add('show')
-        })
+        targetContent.classList.add('show')
       })
     }
 
@@ -52,9 +63,33 @@ tabs.forEach((tab) => {
     const transitionTimeout = setTimeout(() => {
       currentContent.removeEventListener('transitionend', handleTransitionEnd)
       finishTransition()
-    }, 500)
+    }, TRANSITION_FALLBACK_MS)
 
     currentContent.addEventListener('transitionend', handleTransitionEnd)
+  })
+
+  tab.addEventListener('keydown', (event) => {
+    const supportedKeys = ['ArrowLeft', 'ArrowRight', 'Home', 'End']
+    if (!supportedKeys.includes(event.key) || isSwitching) return
+
+    event.preventDefault()
+
+    const currentIndex = [...tabs].indexOf(tab)
+    let nextIndex = currentIndex
+
+    if (event.key === 'ArrowRight') {
+      nextIndex = (currentIndex + 1) % tabs.length
+    } else if (event.key === 'ArrowLeft') {
+      nextIndex = (currentIndex - 1 + tabs.length) % tabs.length
+    } else if (event.key === 'Home') {
+      nextIndex = 0
+    } else if (event.key === 'End') {
+      nextIndex = tabs.length - 1
+    }
+
+    const nextTab = tabs[nextIndex]
+    nextTab.focus()
+    nextTab.click()
   })
 })
 
@@ -65,9 +100,7 @@ window.addEventListener('load', () => {
   if (!initialContent) return
 
   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      initialContent.classList.add('show')
-    })
+    initialContent.classList.add('show')
   })
 })
 
